@@ -1,0 +1,35 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	
+	<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<script>
+		$.get("http://ipinfo.io", function (response) {
+    	//$("#ip").html("IP: " + response.ip);
+   		$("#address").html("Location: " + response.city + ", " + response.region);
+    	
+		var DATA_SERVICE_URL = "https://api.foursquare.com/v2/venues/search?client_id=K0UMGCPE3BVGCGH4FM0TBT33WVEYEGLEMEWLIBEOGCNMK3DX%20&client_secret=JKBNUC5IWEH0PNPKXIIB04HOTMI55G4ARN3PQQEZOCZAH3DS%20&v=20130815%20&near="+response.city+"&query=music";
+
+
+	$(document).ready(function() {
+        $.getJSON(DATA_SERVICE_URL, function(data) {
+        	for (var i=0; i<5; i++){
+        		var value = data.response.venues[i].name;
+        		alert(value);
+        		
+        	}
+        });
+});}, "jsonp");
+
+		
+
+
+		</script>
+		<div id="ip"></div>
+		<div id="address"></div>
+		
+	</body>
+	</html>
+
